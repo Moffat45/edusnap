@@ -23,7 +23,7 @@ const SESSION_DAYS = 30;
 const PUBLIC_DIR = path.join(__dirname, 'public');
 const PLANS = ['free', 'snap', 'family'];
 const SUBJECTS = views.SUBJECTS;
-const LANGUAGES = views.LANGUAGES;
+const LANGUAGES = ['English', 'Afrikaans', 'Zulu'];
 const IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
 
 // ---------- passwords and sessions ----------
@@ -295,5 +295,5 @@ const server = http.createServer(async (req, res) => {
 setInterval(() => db.prepare('DELETE FROM sessions WHERE expires_at < ?').run(Date.now()), 3600000).unref();
 
 server.listen(PORT, () => {
-  console.log(`EduSnap running on port ${PORT}. AI: ${ai.mode() === 'claude' ? ai.providerNames() : 'built-in maths engine (no AI key set)'}. Payments: ${payments.mode()} mode`);
+  console.log(`EduSnap running on port ${PORT}. AI: ${ai.mode() === 'claude' ? 'Claude API' : 'built-in maths engine (no ANTHROPIC_API_KEY)'}. Payments: ${payments.mode()} mode`);
 });
