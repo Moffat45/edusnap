@@ -1,0 +1,14 @@
+{
+  "name": "edusnap",
+  "version": "1.0.0",
+  "description": "EduSnap: AI homework help for South African high school learners",
+  "private": true,
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "admin": "node scripts/admin.js"
+  },
+  "engines": {
+    "node": ">=22.13.0"
+  }
+}
