@@ -2,7 +2,8 @@
 
 const M = require('./model');
 
-const SUBJECTS = ['Mathematics', 'Physical Sciences', 'Accounting', 'ICT / IT', 'English'];
+const SUBJECTS = ['Mathematics', 'Mathematical Literacy', 'Physical Sciences', 'Life Sciences', 'Accounting', 'Business Studies', 'Economics', 'Geography', 'History', 'Information Technology', 'Computer Applications Technology', 'English', 'Afrikaans', 'isiZulu', 'isiXhosa', 'Sesotho', 'Setswana', 'Life Orientation', 'Other subject'];
+const LANGUAGES = ['English', 'Afrikaans', 'Zulu', 'Xhosa', 'Sesotho', 'Setswana', 'Sepedi', 'Xitsonga', 'Tshivenda', 'siSwati', 'isiNdebele'];
 const PLAN_NAMES = { free: 'Free', snap: 'Snap & Learn', family: 'Family' };
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -403,7 +404,7 @@ ${user.planExpired ? '<div class="alert" role="status">Your paid plan has ended,
       <div class="row">
         <div class="field"><label for="a-subject">Subject</label><select id="a-subject" name="subject">${SUBJECTS.map((s) => `<option>${esc(s)}</option>`).join('')}</select></div>
         <div class="field"><label for="a-grade">Grade</label><select id="a-grade" name="grade">${[8, 9, 10, 11, 12].map((g) => `<option${g === user.grade ? ' selected' : ''}>${g}</option>`).join('')}</select></div>
-        <div class="field"><label for="a-language">Answer in</label><select id="a-language" name="language"><option>English</option><option>Afrikaans</option><option>Zulu</option></select></div>
+        <div class="field"><label for="a-language">Answer in</label><select id="a-language" name="language">${LANGUAGES.map((l) => `<option>${esc(l)}</option>`).join('')}</select></div>
       </div>
       <div class="field"><label for="a-question">Your question</label><textarea id="a-question" name="question" required maxlength="2000" rows="4" placeholder="Type your homework question, for example: solve 2x + 6 = 14"></textarea></div>
       <div class="field"><label for="a-photo">Photo of the question ${isPaid ? '' : '<span class="muted">(locked: requires Snap &amp; Learn or Family)</span>'}</label>
@@ -483,4 +484,4 @@ ${section('<a class="btn" href="/">Back to home</a>')}`;
   return layout({ title: 'Not found', user, body });
 }
 
-module.exports = { home, about, persona, plans, revenue, contact, register, login, dashboard, checkout, privacy, notFound, SUBJECTS };
+module.exports = { home, about, persona, plans, revenue, contact, register, login, dashboard, checkout, privacy, notFound, SUBJECTS, LANGUAGES };

@@ -14,6 +14,8 @@ services:
         value: 22.14.0
       - key: DATA_DIR
         value: /var/data
+      - key: GEMINI_API_KEY
+        sync: false
       - key: ANTHROPIC_API_KEY
         sync: false
       - key: CONTACT_EMAIL
